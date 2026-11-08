@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/AI_Smart_Teacher.AI/AI_Smart_Teacher.AI.csproj" />
+    <Project Path="src/AI_Smart_Teacher.Application/AI_Smart_Teacher.Application.csproj" />
+    <Project Path="src/AI_Smart_Teacher.Core/AI_Smart_Teacher.Core.csproj" />
+    <Project Path="src/AI_Smart_Teacher.Data/AI_Smart_Teacher.Data.csproj" />
+    <Project Path="src/AI_Smart_Teacher.Desktop/AI_Smart_Teacher.Desktop.csproj" />
+    <Project Path="src/AI_Smart_Teacher.Infrastructure/AI_Smart_Teacher.Infrastructure.csproj" />
+    <Project Path="src/AI_Smart_Teacher.Vision/AI_Smart_Teacher.Vision.csproj" />
+    <Project Path="src/AI_Smart_Teacher.Voice/AI_Smart_Teacher.Voice.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/AI_Smart_Teacher.DbSmoke/AI_Smart_Teacher.DbSmoke.csproj" />
+  </Folder>
+</Solution>

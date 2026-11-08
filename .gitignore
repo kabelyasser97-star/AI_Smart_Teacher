@@ -1,0 +1,30 @@
+﻿## Build
+bin/
+obj/
+publish/
+TestResults/
+*.user
+*.suo
+*.cache
+*.log
+
+## IDE
+.vs/
+.idea/
+*.swp
+
+## Local runtime data (do not commit)
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+appsettings.Local.json
+secrets.json
+.local/
+user-data/
+
+## OS
+Thumbs.db
+.DS_Store

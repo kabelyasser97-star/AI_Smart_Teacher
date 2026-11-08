@@ -1,0 +1,52 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+  <Color x:Key="ColorDarkBlue">#173B70</Color>
+  <Color x:Key="ColorBlue">#2878D0</Color>
+  <Color x:Key="ColorTurquoise">#20BFA9</Color>
+  <Color x:Key="ColorGold">#FFB84D</Color>
+  <Color x:Key="ColorBackground">#F5F8FC</Color>
+
+  <SolidColorBrush x:Key="BrushDarkBlue" Color="{StaticResource ColorDarkBlue}" />
+  <SolidColorBrush x:Key="BrushBlue" Color="{StaticResource ColorBlue}" />
+  <SolidColorBrush x:Key="BrushTurquoise" Color="{StaticResource ColorTurquoise}" />
+  <SolidColorBrush x:Key="BrushGold" Color="{StaticResource ColorGold}" />
+  <SolidColorBrush x:Key="BrushBackground" Color="{StaticResource ColorBackground}" />
+  <SolidColorBrush x:Key="BrushWhite" Color="#FFFFFFFF" />
+  <SolidColorBrush x:Key="BrushText" Color="#10213D" />
+  <SolidColorBrush x:Key="BrushMutedText" Color="#5D6B82" />
+  <SolidColorBrush x:Key="BrushBorder" Color="#D8E2F0" />
+
+  <FontFamily x:Key="FontArabic">Cairo, Segoe UI, Arial</FontFamily>
+  <FontFamily x:Key="FontEnglish">Inter, Segoe UI, Arial</FontFamily>
+  <FontFamily x:Key="FontDefault">Segoe UI, Cairo, Arial</FontFamily>
+
+  <sys:Double x:Key="FontSizeBody">14</sys:Double>
+  <sys:Double x:Key="FontSizeTitle">24</sys:Double>
+  <sys:Double x:Key="FontSizeSubtitle">15</sys:Double>
+
+  <Style TargetType="Window">
+    <Setter Property="Background" Value="{StaticResource BrushBackground}" />
+    <Setter Property="FontFamily" Value="{StaticResource FontDefault}" />
+    <Setter Property="FontSize" Value="{StaticResource FontSizeBody}" />
+    <Setter Property="Foreground" Value="{StaticResource BrushText}" />
+  </Style>
+
+  <Style x:Key="PrimaryButton" TargetType="Button">
+    <Setter Property="Background" Value="{StaticResource BrushBlue}" />
+    <Setter Property="Foreground" Value="White" />
+    <Setter Property="Padding" Value="14,10" />
+    <Setter Property="Margin" Value="0,6,0,0" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="Cursor" Value="Hand" />
+  </Style>
+
+  <Style x:Key="CardBorder" TargetType="Border">
+    <Setter Property="Background" Value="{StaticResource BrushWhite}" />
+    <Setter Property="BorderBrush" Value="{StaticResource BrushBorder}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="14" />
+    <Setter Property="Padding" Value="16" />
+    <Setter Property="Margin" Value="0,0,0,12" />
+  </Style>
+</ResourceDictionary>

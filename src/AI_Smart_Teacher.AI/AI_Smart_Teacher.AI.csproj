@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>AI_Smart_Teacher.AI</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AI_Smart_Teacher.Core\AI_Smart_Teacher.Core.csproj" />
+    <ProjectReference Include="..\AI_Smart_Teacher.Application\AI_Smart_Teacher.Application.csproj" />
+  </ItemGroup>
+
+</Project>

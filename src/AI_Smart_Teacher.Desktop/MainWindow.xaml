@@ -1,0 +1,296 @@
+﻿<Window x:Class="AI_Smart_Teacher.Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="AI Smart Teacher — المعلم الذكي"
+        Width="1360" Height="860"
+        MinWidth="1100" MinHeight="760"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="{StaticResource BrushDarkBlue}" CornerRadius="16" Padding="18" Margin="0,0,0,16">
+            <DockPanel LastChildFill="False">
+                <StackPanel DockPanel.Dock="Left">
+                    <TextBlock Text="AI Smart Teacher" Foreground="White" FontSize="28" FontWeight="SemiBold" />
+                    <TextBlock Text="تعلّم أذكى، مستقبل أفضل." Foreground="#D9F7F2" FontSize="16" Margin="0,4,0,0" />
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                    <Button x:Name="LanguageButton" Content="English / العربية" Style="{StaticResource PrimaryButton}" Background="{StaticResource BrushTurquoise}" Margin="0,0,8,0" Click="LanguageButton_Click" />
+                    <Button x:Name="LogoutButton" Content="تسجيل الخروج" Style="{StaticResource PrimaryButton}" Background="{StaticResource BrushGold}" Foreground="#173B70" Visibility="Collapsed" Click="LogoutButton_Click" />
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <TabControl Grid.Row="1" x:Name="MainTabs">
+            <TabItem x:Name="AuthTab" Header="الحساب">
+                <Grid Margin="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.15*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" Style="{StaticResource CardBorder}" Margin="0,0,12,0">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel>
+                                <TextBlock x:Name="AuthTitle" FontSize="{StaticResource FontSizeTitle}" FontWeight="SemiBold" />
+                                <TextBlock x:Name="AuthHint" Margin="0,8,0,14" TextWrapping="Wrap" Foreground="{StaticResource BrushMutedText}" />
+                                <TextBlock x:Name="LoginHeader" FontSize="18" FontWeight="SemiBold" Margin="0,4,0,8" />
+                                <TextBlock x:Name="LoginUserLabel" />
+                                <TextBox x:Name="LoginUserBox" Margin="0,4,0,10" Padding="10" />
+                                <TextBlock x:Name="LoginPasswordLabel" />
+                                <PasswordBox x:Name="LoginPasswordBox" Margin="0,4,0,10" Padding="10" />
+                                <Button x:Name="LoginButton" Style="{StaticResource PrimaryButton}" Click="LoginButton_Click" />
+                                <Separator Margin="0,18,0,14" />
+                                <TextBlock x:Name="RegisterHeader" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,8" />
+                                <TextBlock x:Name="RegisterUserLabel" />
+                                <TextBox x:Name="RegisterUserBox" Margin="0,4,0,10" Padding="10" />
+                                <TextBlock x:Name="RegisterEmailLabel" />
+                                <TextBox x:Name="RegisterEmailBox" Margin="0,4,0,10" Padding="10" />
+                                <TextBlock x:Name="RegisterDisplayLabel" />
+                                <TextBox x:Name="RegisterDisplayBox" Margin="0,4,0,10" Padding="10" />
+                                <TextBlock x:Name="RegisterRoleLabel" />
+                                <ComboBox x:Name="RegisterRoleBox" Margin="0,4,0,10" Padding="8" />
+                                <TextBlock x:Name="RegisterPasswordLabel" />
+                                <PasswordBox x:Name="RegisterPasswordBox" Margin="0,4,0,10" Padding="10" />
+                                <Button x:Name="RegisterButton" Style="{StaticResource PrimaryButton}" Background="{StaticResource BrushDarkBlue}" Click="RegisterButton_Click" />
+                                <Border x:Name="MessageBorder" CornerRadius="10" Padding="12" Margin="0,14,0,0" Visibility="Collapsed">
+                                    <TextBlock x:Name="MessageText" TextWrapping="Wrap" />
+                                </Border>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Border>
+                    <StackPanel Grid.Column="1">
+                        <Border Style="{StaticResource CardBorder}">
+                            <StackPanel>
+                                <TextBlock x:Name="SessionTitle" FontSize="20" FontWeight="SemiBold" />
+                                <TextBlock x:Name="SessionBody" Margin="0,10,0,0" TextWrapping="Wrap" Foreground="{StaticResource BrushMutedText}" />
+                                <TextBlock x:Name="PermissionsTitle" Margin="0,14,0,6" FontWeight="SemiBold" />
+                                <ItemsControl x:Name="PermissionsList" />
+                            </StackPanel>
+                        </Border>
+                        <Border Style="{StaticResource CardBorder}">
+                            <StackPanel>
+                                <TextBlock x:Name="PhaseTitle" FontSize="20" FontWeight="SemiBold" />
+                                <TextBlock x:Name="PhaseBody" Margin="0,10,0,0" TextWrapping="Wrap" Foreground="{StaticResource BrushMutedText}" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="CurriculumTab" Header="المناهج">
+                <Grid Margin="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.2*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" Style="{StaticResource CardBorder}" Margin="0,0,12,0">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel>
+                                <TextBlock x:Name="CurriculumTitle" FontSize="22" FontWeight="SemiBold" />
+                                <TextBlock x:Name="CurriculumHint" Margin="0,6,0,12" TextWrapping="Wrap" Foreground="{StaticResource BrushMutedText}" />
+                                <TextBlock x:Name="StageLabel" /><ComboBox x:Name="StageBox" DisplayMemberPath="Name" Margin="0,4,0,8" SelectionChanged="StageBox_SelectionChanged" />
+                                <TextBlock x:Name="GradeLabel" /><ComboBox x:Name="GradeBox" DisplayMemberPath="Name" Margin="0,4,0,8" SelectionChanged="GradeBox_SelectionChanged" />
+                                <TextBlock x:Name="CurriculumLabel" /><ComboBox x:Name="CurriculumBox" DisplayMemberPath="Name" Margin="0,4,0,8" SelectionChanged="CurriculumBox_SelectionChanged" />
+                                <TextBlock x:Name="SubjectLabel" /><ComboBox x:Name="SubjectBox" DisplayMemberPath="Name" Margin="0,4,0,8" SelectionChanged="SubjectBox_SelectionChanged" />
+                                <TextBlock x:Name="UnitLabel" /><ComboBox x:Name="UnitBox" DisplayMemberPath="Name" Margin="0,4,0,8" SelectionChanged="UnitBox_SelectionChanged" />
+                                <TextBlock x:Name="LessonLabel" /><ComboBox x:Name="LessonBox" DisplayMemberPath="Title" Margin="0,4,0,8" SelectionChanged="LessonBox_SelectionChanged" />
+                                <Border Background="#EEF6FF" CornerRadius="10" Padding="12" Margin="0,8,0,0">
+                                    <StackPanel>
+                                        <TextBlock x:Name="LessonDetailTitle" FontWeight="SemiBold" TextWrapping="Wrap" />
+                                        <TextBlock x:Name="LessonDetailBody" Margin="0,6,0,0" TextWrapping="Wrap" />
+                                        <ItemsControl x:Name="LessonContentsList" Margin="0,8,0,0" />
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Border>
+                    <Border Grid.Column="1" Style="{StaticResource CardBorder}">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel>
+                                <TextBlock x:Name="ManageTitle" FontSize="20" FontWeight="SemiBold" />
+                                <TextBlock x:Name="ManageHint" Margin="0,6,0,12" TextWrapping="Wrap" Foreground="{StaticResource BrushMutedText}" />
+                                <TextBlock x:Name="NewStageLabel" /><TextBox x:Name="NewStageBox" Margin="0,4,0,6" Padding="8" /><Button x:Name="AddStageButton" Style="{StaticResource PrimaryButton}" Click="AddStageButton_Click" />
+                                <TextBlock x:Name="NewGradeLabel" Margin="0,10,0,0" /><TextBox x:Name="NewGradeBox" Margin="0,4,0,6" Padding="8" /><Button x:Name="AddGradeButton" Style="{StaticResource PrimaryButton}" Click="AddGradeButton_Click" />
+                                <TextBlock x:Name="NewCurriculumLabel" Margin="0,10,0,0" /><TextBox x:Name="NewCurriculumBox" Margin="0,4,0,6" Padding="8" /><Button x:Name="AddCurriculumButton" Style="{StaticResource PrimaryButton}" Click="AddCurriculumButton_Click" />
+                                <TextBlock x:Name="NewSubjectLabel" Margin="0,10,0,0" /><TextBox x:Name="NewSubjectBox" Margin="0,4,0,6" Padding="8" /><Button x:Name="AddSubjectButton" Style="{StaticResource PrimaryButton}" Click="AddSubjectButton_Click" />
+                                <TextBlock x:Name="NewUnitLabel" Margin="0,10,0,0" /><TextBox x:Name="NewUnitBox" Margin="0,4,0,6" Padding="8" /><Button x:Name="AddUnitButton" Style="{StaticResource PrimaryButton}" Click="AddUnitButton_Click" />
+                                <TextBlock x:Name="NewLessonLabel" Margin="0,10,0,0" /><TextBox x:Name="NewLessonBox" Margin="0,4,0,6" Padding="8" /><Button x:Name="AddLessonButton" Style="{StaticResource PrimaryButton}" Click="AddLessonButton_Click" />
+                                <TextBlock x:Name="NewContentLabel" Margin="0,10,0,0" /><TextBox x:Name="NewContentTitleBox" Margin="0,4,0,6" Padding="8" />
+                                <ComboBox x:Name="ContentTypeBox" Margin="0,0,0,6" Padding="8" />
+                                <TextBox x:Name="NewContentBodyBox" Margin="0,0,0,6" Padding="8" AcceptsReturn="True" Height="70" TextWrapping="Wrap" />
+                                <Button x:Name="AddContentButton" Style="{StaticResource PrimaryButton}" Click="AddContentButton_Click" />
+                                <Border x:Name="CurriculumMessageBorder" CornerRadius="10" Padding="12" Margin="0,14,0,0" Visibility="Collapsed">
+                                    <TextBlock x:Name="CurriculumMessageText" TextWrapping="Wrap" />
+                                </Border>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Border>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="AiTab" Header="المعلم الذكي">
+                <Grid Margin="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.5*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" Style="{StaticResource CardBorder}" Margin="0,0,12,0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0">
+                                <TextBlock x:Name="AiTitle" FontSize="22" FontWeight="SemiBold" />
+                                <TextBlock x:Name="AiHint" Margin="0,6,0,10" TextWrapping="Wrap" Foreground="{StaticResource BrushMutedText}" />
+                                <Button x:Name="NewConversationButton" Style="{StaticResource PrimaryButton}" HorizontalAlignment="Left" Click="NewConversationButton_Click" />
+                            </StackPanel>
+                            <ListBox x:Name="AiMessagesList" Grid.Row="1" Margin="0,10,0,10" BorderBrush="{StaticResource BrushBorder}" />
+                            <StackPanel Grid.Row="2">
+                                <WrapPanel Margin="0,0,0,8">
+                                    <Button x:Name="AttachImageButton" Style="{StaticResource PrimaryButton}" Margin="0,0,8,0" Background="{StaticResource BrushDarkBlue}" Click="AttachImageButton_Click" />
+                                    <Button x:Name="DictateButton" Style="{StaticResource PrimaryButton}" Margin="0,0,8,0" Background="{StaticResource BrushBlue}" Click="DictateButton_Click" />
+                                    <Button x:Name="SpeakButton" Style="{StaticResource PrimaryButton}" Margin="0,0,8,0" Background="{StaticResource BrushBlue}" Click="SpeakButton_Click" />
+                                </WrapPanel>
+                                <TextBox x:Name="AiInputBox" Height="90" AcceptsReturn="True" TextWrapping="Wrap" Padding="10" VerticalScrollBarVisibility="Auto" />
+                                <Button x:Name="SendAiButton" Style="{StaticResource PrimaryButton}" Margin="0,8,0,0" Click="SendAiButton_Click" />
+                                <TextBlock x:Name="AiStatusText" Margin="0,8,0,0" TextWrapping="Wrap" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <Border Grid.Column="1" Style="{StaticResource CardBorder}">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel>
+                                <TextBlock x:Name="AiSettingsTitle" FontSize="20" FontWeight="SemiBold" />
+                                <TextBlock x:Name="AiSettingsHint" Margin="0,6,0,12" TextWrapping="Wrap" Foreground="{StaticResource BrushMutedText}" />
+                                <TextBlock x:Name="AiProviderLabel" /><ComboBox x:Name="AiProviderBox" Margin="0,4,0,8" Padding="8" />
+                                <TextBlock x:Name="AiModelLabel" /><TextBox x:Name="AiModelBox" Margin="0,4,0,8" Padding="8" />
+                                <TextBlock x:Name="AiEndpointLabel" /><TextBox x:Name="AiEndpointBox" Margin="0,4,0,8" Padding="8" />
+                                <TextBlock x:Name="AiKeyLabel" /><PasswordBox x:Name="AiKeyBox" Margin="0,4,0,8" Padding="8" />
+                                <CheckBox x:Name="AiCloudCheck" Margin="0,4,0,8" />
+                                <TextBlock x:Name="AiLimitLabel" /><TextBox x:Name="AiLimitBox" Margin="0,4,0,8" Padding="8" />
+                                <Button x:Name="SaveAiSettingsButton" Style="{StaticResource PrimaryButton}" Background="{StaticResource BrushDarkBlue}" Click="SaveAiSettingsButton_Click" />
+                                <Border Background="#FFF8E8" CornerRadius="10" Padding="12" Margin="0,12,0,0">
+                                    <TextBlock x:Name="AiSafetyText" TextWrapping="Wrap" Foreground="#6A4B00" />
+                                </Border>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Border>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="AssessmentTab" Header="الاختبارات والتقدم">
+                <Grid Margin="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.2*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" Style="{StaticResource CardBorder}" Margin="0,0,12,0">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel>
+                                <TextBlock x:Name="AssessmentTitle" FontSize="22" FontWeight="SemiBold" />
+                                <TextBlock x:Name="AssessmentHint" Margin="0,6,0,12" TextWrapping="Wrap" Foreground="{StaticResource BrushMutedText}" />
+                                <Button x:Name="RefreshAssessmentsButton" Style="{StaticResource PrimaryButton}" Margin="0,0,0,8" Click="RefreshAssessmentsButton_Click" />
+                                <TextBlock x:Name="AssessmentsLabel" FontWeight="SemiBold" /><ComboBox x:Name="AssessmentBox" DisplayMemberPath="Title" Margin="0,4,0,8" SelectionChanged="AssessmentBox_SelectionChanged" />
+                                <TextBlock x:Name="AssessmentDetailText" TextWrapping="Wrap" Margin="0,0,0,8" />
+                                <TextBlock x:Name="AssessmentAnswerHint" TextWrapping="Wrap" Margin="0,0,0,8" Foreground="{StaticResource BrushMutedText}" />
+                                <ScrollViewer MaxHeight="320" VerticalScrollBarVisibility="Auto" Margin="0,0,0,8">
+                                    <StackPanel x:Name="AssessmentQuestionsPanel" />
+                                </ScrollViewer>
+                                <Button x:Name="SubmitAssessmentButton" Style="{StaticResource PrimaryButton}" Click="SubmitAssessmentButton_Click" />
+                                <Border Background="#EEF6FF" CornerRadius="10" Padding="12" Margin="0,12,0,0">
+                                    <StackPanel>
+                                        <TextBlock x:Name="ResultsLabel" FontWeight="SemiBold" />
+                                        <TextBlock x:Name="ResultsText" Margin="0,6,0,0" TextWrapping="Wrap" />
+                                    </StackPanel>
+                                </Border>
+                                <Border Background="#ECFCF7" CornerRadius="10" Padding="12" Margin="0,12,0,0">
+                                    <StackPanel>
+                                        <TextBlock x:Name="ProgressLabel" FontWeight="SemiBold" />
+                                        <TextBlock x:Name="ProgressText" Margin="0,6,0,0" TextWrapping="Wrap" />
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Border>
+                    <Border Grid.Column="1" Style="{StaticResource CardBorder}">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel>
+                                <TextBlock x:Name="ManageAssessmentTitle" FontSize="20" FontWeight="SemiBold" />
+                                <TextBlock x:Name="ManageAssessmentHint" Margin="0,6,0,12" TextWrapping="Wrap" Foreground="{StaticResource BrushMutedText}" />
+                                <TextBlock x:Name="NewAssessmentLabel" /><TextBox x:Name="NewAssessmentBox" Margin="0,4,0,6" Padding="8" />
+                                <TextBlock x:Name="NewAssessmentDescLabel" /><TextBox x:Name="NewAssessmentDescBox" Margin="0,4,0,6" Padding="8" AcceptsReturn="True" Height="60" TextWrapping="Wrap" />
+                                <TextBlock x:Name="DurationLabel" /><TextBox x:Name="AssessmentDurationBox" Margin="0,4,0,8" Padding="8" Text="20" />
+                                <Button x:Name="CreateAssessmentButton" Style="{StaticResource PrimaryButton}" Click="CreateAssessmentButton_Click" />
+                                <Separator Margin="0,12,0,12" />
+                                <TextBlock x:Name="NewQuestionLabel" /><TextBox x:Name="NewQuestionBox" Margin="0,4,0,6" Padding="8" AcceptsReturn="True" Height="70" TextWrapping="Wrap" />
+                                <TextBlock x:Name="QuestionPointsLabel" /><TextBox x:Name="QuestionPointsBox" Margin="0,4,0,6" Padding="8" Text="1" />
+                                <TextBlock x:Name="QuestionOptionsEntryLabel" /><TextBox x:Name="QuestionOptionsEntryBox" Margin="0,4,0,8" Padding="8" AcceptsReturn="True" Height="90" TextWrapping="Wrap" />
+                                <Button x:Name="AddQuestionButton" Style="{StaticResource PrimaryButton}" Margin="0,0,0,8" Click="AddQuestionButton_Click" />
+                                <WrapPanel>
+                                    <Button x:Name="PublishAssessmentButton" Style="{StaticResource PrimaryButton}" Margin="0,0,8,0" Background="{StaticResource BrushDarkBlue}" Click="PublishAssessmentButton_Click" />
+                                    <Button x:Name="UnpublishAssessmentButton" Style="{StaticResource PrimaryButton}" Background="{StaticResource BrushBlue}" Click="UnpublishAssessmentButton_Click" />
+                                </WrapPanel>
+                                <Border x:Name="AssessmentMessageBorder" CornerRadius="10" Padding="12" Margin="0,14,0,0" Visibility="Collapsed">
+                                    <TextBlock x:Name="AssessmentMessageText" TextWrapping="Wrap" />
+                                </Border>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Border>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="AdminTab" Header="الإدارة">
+                <Grid Margin="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.2*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" Style="{StaticResource CardBorder}" Margin="0,0,12,0">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel>
+                                <TextBlock x:Name="AdminTitle" FontSize="22" FontWeight="SemiBold" />
+                                <TextBlock x:Name="AdminHint" Margin="0,6,0,12" TextWrapping="Wrap" Foreground="{StaticResource BrushMutedText}" />
+                                <Button x:Name="RefreshAdminButton" Style="{StaticResource PrimaryButton}" Margin="0,0,0,8" Click="RefreshAdminButton_Click" />
+                                <TextBlock x:Name="AdminStatusLabel" FontWeight="SemiBold" />
+                                <TextBlock x:Name="AdminStatusText" Margin="0,6,0,12" TextWrapping="Wrap" />
+                                <TextBlock x:Name="AdminUsersLabel" FontWeight="SemiBold" /><ComboBox x:Name="AdminUserBox" DisplayMemberPath="Username" Margin="0,4,0,8" />
+                                <WrapPanel Margin="0,0,0,8">
+                                    <Button x:Name="ActivateUserButton" Style="{StaticResource PrimaryButton}" Margin="0,0,8,0" Click="ActivateUserButton_Click" />
+                                    <Button x:Name="DeactivateUserButton" Style="{StaticResource PrimaryButton}" Background="{StaticResource BrushBlue}" Click="DeactivateUserButton_Click" />
+                                </WrapPanel>
+                                <TextBlock x:Name="AdminRoleLabel" /><ComboBox x:Name="AdminRoleBox" Margin="0,4,0,8" Padding="8" />
+                                <Button x:Name="SetRoleButton" Style="{StaticResource PrimaryButton}" Margin="0,0,0,12" Background="{StaticResource BrushDarkBlue}" Click="SetRoleButton_Click" />
+                                <TextBlock x:Name="AdminAuditLabel" FontWeight="SemiBold" />
+                                <TextBox x:Name="AdminAuditText" Margin="0,6,0,0" Height="220" IsReadOnly="True" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Border>
+                    <Border Grid.Column="1" Style="{StaticResource CardBorder}">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel>
+                                <TextBlock x:Name="AdminSystemTitle" FontSize="20" FontWeight="SemiBold" />
+                                <TextBlock x:Name="AdminSystemHint" Margin="0,6,0,12" TextWrapping="Wrap" Foreground="{StaticResource BrushMutedText}" />
+                                <Button x:Name="BackupDbButton" Style="{StaticResource PrimaryButton}" Margin="0,0,0,12" Click="BackupDbButton_Click" />
+                                <TextBlock x:Name="SettingKeyLabel" /><TextBox x:Name="SettingKeyBox" Margin="0,4,0,8" Padding="8" />
+                                <TextBlock x:Name="SettingValueLabel" /><TextBox x:Name="SettingValueBox" Margin="0,4,0,8" Padding="8" />
+                                <TextBlock x:Name="SettingCategoryLabel" /><TextBox x:Name="SettingCategoryBox" Margin="0,4,0,8" Padding="8" />
+                                <Button x:Name="SaveSettingButton" Style="{StaticResource PrimaryButton}" Margin="0,0,0,12" Background="{StaticResource BrushDarkBlue}" Click="SaveSettingButton_Click" />
+                                <TextBlock x:Name="AdminSettingsLabel" FontWeight="SemiBold" />
+                                <TextBox x:Name="AdminSettingsText" Margin="0,6,0,0" Height="260" IsReadOnly="True" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+                                <Border x:Name="AdminMessageBorder" CornerRadius="10" Padding="12" Margin="0,14,0,0" Visibility="Collapsed">
+                                    <TextBlock x:Name="AdminMessageText" TextWrapping="Wrap" />
+                                </Border>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Border>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
